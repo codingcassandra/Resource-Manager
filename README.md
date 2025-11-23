@@ -1,0 +1,15 @@
+Race Condition
+
+In the original Naive implementation, the shared variable free was accessed by multiple threads without synchronization, causing race conditions. Both acquire() and release() modified free concurrently, allowing threads to pass the availability check and update the value at the same time. This unsynchronized access led to inconsistent resource counts and unpredictable behavior.
+
+Synchronization
+
+To fix the race condition, I used a ReentrantLock in the Locked class to ensure that only one thread could modify the shared variable free at a time. This made the acquire() and release() operations atomic and prevented overlapping.
+
+Blocking
+
+The Wait class added blocking behavior using a ReentrantLock and a Condition variable. Threads that tried to acquire more resources than were available would wait until others released enough, avoiding busy waiting. When resources became available, signalAll() woke waiting threads to recheck for available resources.
+
+Monitor
+
+The Guarded class used a monitor design with a fair ReentrantLock and a Condition variable to manage access to free. Threads waited when resources were unavailable and resumed only after being signaled by a release. This ensured proper synchronization, fairness, and efficient thread coordination without race conditions.
