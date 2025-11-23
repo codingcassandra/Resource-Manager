@@ -1,0 +1,3 @@
+Compilation/Execution Document
+
+I chose to code my programming assignment in Java as I am currently enrolled in Enterprise Computing (CNT 4714) where we are learning how to program threads in Java. This has made me more comfortable using eclipse to compile my Java code when dealing with threads. There are no exact commands for running this code as it should execute as is and operate as a standalone application.
